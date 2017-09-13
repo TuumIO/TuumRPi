@@ -1,0 +1,28 @@
+import socket
+import sys
+import tkinter
+
+UDP_IP = "192.168.1.157"
+UDP_PORT = 2390
+message = "VAULT"
+msgbts = bytes(message, 'utf-8')
+
+window = tkinter.Tk()
+window.title("IRIS")
+window.geometry("300x300")
+
+def send():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.bind(("",8888))
+    s.sendto(msgbts, (UDP_IP, UDP_PORT))
+    d = s.recvfrom(1024)
+    lbl1.configure(text = d)
+    
+btn1 = tkinter.Button(window, text = "Enviar!", command = send)
+btn1.pack()
+
+lbl1 = tkinter.Label(window, text = "")
+lbl1.pack()
+
+window.mainloop()   
+    
