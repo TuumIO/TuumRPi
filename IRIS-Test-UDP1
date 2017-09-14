@@ -3,10 +3,10 @@ import sys
 
 UDP_IP = "192.168.1.157"
 UDP_PORT = 2390
-MESSAGE = "Hello, World!"
+MESSAGE = "Hello, World!" #Eliminar esta linea, ya no se necesita
  
-print("UDP target IP:", UDP_IP)
-print("UDP target port:", UDP_PORT)
+print("UDP target IP:", UDP_IP) #Eliminar esta linea, ya no se necesita / RPi ciego
+print("UDP target port:", UDP_PORT) #Eliminar esta linea, ya no se necesita / RPi ciego
  
 try:
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -16,11 +16,12 @@ except:
     sys.exit()
 
 while(1):
-    msg = input("mensaje:")
-    msgbts = bytes(msg, 'utf-8')
+    msg = input("mensaje:") #Eliminar esta linea, ya no se necesita / RPi ciego
+    msgbts = bytes("Test msg", 'utf-8') #Actualice el mensaje a enviar
     s.sendto(msgbts, (UDP_IP, UDP_PORT))
-    d = s.recvfrom(1024)
-    print(d)
+    d = s.recvfrom(1024) #Prender Led cuando se recibe algo?
+    print(d) #Eliminar esta linea, ya no se necesita / RPi ciego
+    # Incluir funcion de delay de 5 minutos
 
     
     
