@@ -6,7 +6,7 @@ import time
 
 UDP_IP = "192.168.1.157"
 UDP_PORT = 2390
-msg = "Hola Arduino"
+msg = "VAULT"
  
 try:
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -15,7 +15,7 @@ except:
     sys.exit()
 
 while(1):
-    msgbts = bytes(msg, 'utf-8')
-    s.sendto(msgbts, (UDP_IP, UDP_PORT))
-    d = s.recvfrom(1024) #Prender Led cuando se recibe algo?
-    time.sleep(300)
+  msgbts = bytes(msg, 'utf-8')
+  s.sendto(msgbts, (UDP_IP, UDP_PORT))
+  d = s.recvfrom(1024) #Prender Led cuando se recibe algo?
+  time.sleep(300)
