@@ -1,26 +1,21 @@
+#!/usr/bin/python
+
 import socket
 import sys
+import time
 
 UDP_IP = "192.168.1.157"
 UDP_PORT = 2390
-MESSAGE = "Hello, World!"
- 
-print("UDP target IP:", UDP_IP)
-print("UDP target port:", UDP_PORT)
+msg = "Hola Arduino"
  
 try:
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.bind(("",8888))
 except:
-    print("Failed to create socket")
     sys.exit()
 
 while(1):
-    msg = input("mensaje:")
     msgbts = bytes(msg, 'utf-8')
     s.sendto(msgbts, (UDP_IP, UDP_PORT))
-    d = s.recvfrom(1024)
-    print(d)
-
-    
-    
+    d = s.recvfrom(1024) #Prender Led cuando se recibe algo?
+    time.sleep(300)
