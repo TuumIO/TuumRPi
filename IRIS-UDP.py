@@ -15,7 +15,8 @@ except:
     sys.exit()
 
 while(1):
-  msgbts = bytes(msg, 'utf-8')
+  #msgbts = bytes(msg, 'utf-8')
+  msgbts = str(msg).encode("utf-8")
   s.sendto(msgbts, (UDP_IP, UDP_PORT))
   d = s.recvfrom(1024) #Prender Led cuando se recibe algo?
-  time.sleep(300)
+  time.sleep(120)
